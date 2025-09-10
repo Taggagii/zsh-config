@@ -29,4 +29,8 @@ source $HOME/zsh_plugins/powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
 
+# aliases
 alias ls="ls -lath --color"
+gc() {
+	git clone git@github.com:$1/$2.git
+}

@@ -8,7 +8,3 @@ git clone --depth 1 git@github.com:romkatv/powerlevel10k
 cp .zshrc $HOME/.zshrc
 cp .p10k.zsh $HOME/.p10k.zsh
 
-
-
-
-
