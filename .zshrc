@@ -21,9 +21,19 @@ export PATH="$HOME/.local/bin:$PATH"
 
 setopt interactivecomments
 
-source $HOME/zsh_plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+# source $HOME/zsh_plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 source $HOME/zsh_plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $HOME/zsh_plugins/powerlevel10k/powerlevel10k.zsh-theme
+
+# disable autocomplete for certain commands
+pnpm() {
+	disable -f _autocomplete 2>/dev/null
+	disable -f _autocomplete.fetch 2>/dev/null
+
+	command pnpm "$@"
+	autoload -Uz _autocomplete _autocomplete.fetch
+}
+
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -32,5 +42,5 @@ typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
 # aliases
 alias ls="ls -lath --color"
 gc() {
-	git clone git@github.com:$1/$2.git
+	git clone git@github.com:$1/$2.git $HOME/Documents/Github/$2
 }
