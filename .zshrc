@@ -21,10 +21,29 @@ export PATH="$HOME/.local/bin:$PATH"
 # ------------------ configuration -----------------------
 
 setopt interactivecomments
+HISTSIZE=5000
+HISTFILE="$(tag-location-folder-output)/zsh-history"
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+bindkey '^n' history-search-forward
+bindkey '^p' history-search-backward
+
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
 
 # source $HOME/zsh_plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-source $HOME/zsh_plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $HOME/zsh_plugins/powerlevel10k/powerlevel10k.zsh-theme
+source $HOME/zsh_plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOME/zsh_plugins/zsh-completions/zsh-completions.plugin.zsh
+source $HOME/zsh_plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $HOME/zsh_plugins/zsh-vi-mode/zsh-vi-mode.zsh
 
 # disable autocomplete for certain commands
 pnpm() {
@@ -41,7 +60,7 @@ pnpm() {
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
 
 # aliases
-alias ls="ls -lath --color"
 gc() {
 	git clone git@github.com:$1/$2.git $HOME/Documents/Github/$2
 }
+alias ls="ls --color"
