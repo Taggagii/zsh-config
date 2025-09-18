@@ -32,10 +32,11 @@ setopt hist_ignore_all_dups
 setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
+# zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' # this doesn't work
+
 bindkey '^n' history-search-forward
 bindkey '^p' history-search-backward
-
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+bindkey '^F' autosuggest-accept
 
 
 # source $HOME/zsh_plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
