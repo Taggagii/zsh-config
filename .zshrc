@@ -8,7 +8,6 @@ fi
 # --- NVM ---
 export NVM_DIR="${XDG_CONFIG_HOME:-$HOME}/nvm"
 [[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh"
-
 # --- PYENV ---
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d "$PYENV_ROOT/bin" ]] && export PATH="$PYENV_ROOT/bin:$PATH"
@@ -20,6 +19,23 @@ export PATH="$HOME/.local/bin:$PATH"
 
 # ------------------ configuration -----------------------
 
+# source $HOME/zsh_plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+source $HOME/zsh_plugins/powerlevel10k/powerlevel10k.zsh-theme
+source $HOME/zsh_plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOME/zsh_plugins/zsh-completions/zsh-completions.plugin.zsh
+source $HOME/zsh_plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $HOME/zsh_plugins/zsh-vi-mode/zsh-vi-mode.zsh
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
+
+# aliases
+gc() {
+	git clone git@github.com:$1/$2.git $HOME/Documents/Github/$2
+}
+alias ls="ls --color"
+alias bmx="source \$(tag bmx write)"
+
+# configuration that has to come after plugins
 setopt interactivecomments
 HISTSIZE=5000
 HISTFILE="$(tag-location-folder-output)/zsh-history"
@@ -34,34 +50,8 @@ setopt hist_ignore_dups
 setopt hist_find_no_dups
 # zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' # this doesn't work
 
-bindkey '^n' history-search-forward
-bindkey '^p' history-search-backward
-bindkey '^F' autosuggest-accept
-
-
-# source $HOME/zsh_plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-source $HOME/zsh_plugins/powerlevel10k/powerlevel10k.zsh-theme
-source $HOME/zsh_plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $HOME/zsh_plugins/zsh-completions/zsh-completions.plugin.zsh
-source $HOME/zsh_plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $HOME/zsh_plugins/zsh-vi-mode/zsh-vi-mode.zsh
-
-# disable autocomplete for certain commands
-pnpm() {
-	disable -f _autocomplete 2>/dev/null
-	disable -f _autocomplete.fetch 2>/dev/null
-
-	command pnpm "$@"
-	autoload -Uz _autocomplete _autocomplete.fetch
+function zvm_after_init() {
+  bindkey '^n' history-beginning-search-forward
+  bindkey '^p' history-beginning-search-backward
+  bindkey '^F' autosuggest-accept
 }
-
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
-
-# aliases
-gc() {
-	git clone git@github.com:$1/$2.git $HOME/Documents/Github/$2
-}
-alias ls="ls --color"
