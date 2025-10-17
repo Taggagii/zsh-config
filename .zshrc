@@ -33,7 +33,7 @@ gc() {
 	git clone git@github.com:$1/$2.git $HOME/Documents/Github/$2
 }
 alias ls="ls --color"
-alias bmx="source \$(tag bmx write)"
+# alias bmx="source \$(tag bmx write)"
 
 # configuration that has to come after plugins
 setopt interactivecomments
