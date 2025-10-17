@@ -9,9 +9,9 @@ fi
 export NVM_DIR="${XDG_CONFIG_HOME:-$HOME}/nvm"
 [[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh"
 # --- PYENV ---
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d "$PYENV_ROOT/bin" ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - zsh)"
+# export PYENV_ROOT="$HOME/.pyenv"
+# [[ -d "$PYENV_ROOT/bin" ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init - zsh)"
 
 # Path updates
 export PATH="$HOME/bash-scripts:$PATH"
@@ -55,3 +55,7 @@ function zvm_after_init() {
   bindkey '^p' history-beginning-search-backward
   bindkey '^F' autosuggest-accept
 }
+
+test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
+test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.bashrc
