@@ -16,6 +16,7 @@ export NVM_DIR="${XDG_CONFIG_HOME:-$HOME}/nvm"
 # Path updates
 export PATH="$HOME/bash-scripts:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 
 # ------------------ configuration -----------------------
 
