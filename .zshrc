@@ -23,9 +23,9 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # source $HOME/zsh_plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 source $HOME/zsh_plugins/powerlevel10k/powerlevel10k.zsh-theme
 source $HOME/zsh_plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $HOME/zsh_plugins/zsh-completions/zsh-completions.plugin.zsh
-source $HOME/zsh_plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $HOME/zsh_plugins/zsh-vi-mode/zsh-vi-mode.zsh
+# source $HOME/zsh_plugins/zsh-completions/zsh-completions.plugin.zsh
+# source $HOME/zsh_plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+# source $HOME/zsh_plugins/zsh-vi-mode/zsh-vi-mode.zsh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
 
