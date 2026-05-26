@@ -91,6 +91,7 @@ COMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+	# built-in
 	git
 	aws
 	cp
@@ -101,12 +102,18 @@ plugins=(
 	npm
 	nvm
 	terraform
-	sudo
+	# sudo
 	tmux
 	vi-mode
 	vscode
 	z
 	zsh-interactive-cd
+	
+	# custom
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+  # fast-syntax-highlighting
+  zsh-autocomplete
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -151,9 +158,6 @@ s-l() {
 	open "https://$@"
 }
 
-
-
 source-zsh-config() {
 	source "$HOME/.zshrc"
 }
-source ~/completion-for-pnpm.bash
