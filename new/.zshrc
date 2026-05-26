@@ -145,3 +145,8 @@ bindkey -v
 search() {
 	open "https://google.com/search?q=$(echo $@ | tr '[:space:]' '+')"
 }
+
+source-zsh-config() {
+	source "$HOME/.zshrc"
+}
+source ~/completion-for-pnpm.bash
