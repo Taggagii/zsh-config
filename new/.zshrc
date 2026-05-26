@@ -106,6 +106,7 @@ plugins=(
 	vi-mode
 	vscode
 	z
+	zsh-interactive-cd
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -142,9 +143,15 @@ export EDITOR='nvim'
 
 bindkey -v
 
-search() {
+s-q() {
 	open "https://google.com/search?q=$(echo $@ | tr '[:space:]' '+')"
 }
+
+s-l() {
+	open "https://$@"
+}
+
+
 
 source-zsh-config() {
 	source "$HOME/.zshrc"
