@@ -1,15 +1,16 @@
-export NVM_DIR="${XDG_CONFIG_HOME:-$HOME}/nvm"
-[[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh"
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
-export PATH="$HOME/bash-scripts:$PATH"
+export PATH="$HOME/tag-scripts:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 
-gc() {
-	git clone git@github.com:$1/$2.git $HOME/Documents/Github/$2
+git-clone() {
+	echo "getting $1 $2"
+	git clone "git@github.com:$1/$2.git" "$HOME/Github/$2"
 }
 
-bindkey -v
 
 alias ls="ls --color"
 
@@ -89,7 +90,23 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(
+	git
+	aws
+	cp
+	fzf
+	iterm2
+	macos
+	node
+	npm
+	nvm
+	terraform
+	sudo
+	tmux
+	vi-mode
+	vscode
+	z
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -122,3 +139,9 @@ export EDITOR='nvim'
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+bindkey -v
+
+search() {
+	open "https://google.com/search?q=$(echo $@ | tr '[:space:]' '+')"
+}
