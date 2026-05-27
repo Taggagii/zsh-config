@@ -112,8 +112,7 @@ plugins=(
 	# custom
   zsh-autosuggestions
   zsh-syntax-highlighting
-  # fast-syntax-highlighting
-  zsh-autocomplete
+  # zsh-autocomplete
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -161,3 +160,15 @@ s-l() {
 source-zsh-config() {
 	source "$HOME/.zshrc"
 }
+
+tks() {
+	tmux kill-session -t $(tag-tmux-helper-session-id)
+}
+
+cdf() {
+	local dir
+	dir=$(fd -t d | fzf) && cd -- "$dir"
+}
+
+
+
